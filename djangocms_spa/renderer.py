@@ -47,9 +47,10 @@ class MixinPluginRenderer(BaseSPARenderer):
     """
     Renders the plugins which use the SPAPluginMixin.
     """
-    def __init__(self, plugin_class: SPAPluginMixin):
+    def __init__(self, plugin_class):
         super().__init__()
         self.plugin_class = plugin_class
+    __init__.__annotations__ = {'plugin_class': SPAPluginMixin}
 
     @property
     def frontend_component_name(self):

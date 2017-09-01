@@ -1,4 +1,4 @@
-from urllib.request import url2pathname
+from urllib import url2pathname
 
 from cms.models import StaticPlaceholder
 from django.conf import settings

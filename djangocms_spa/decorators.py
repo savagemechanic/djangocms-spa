@@ -8,7 +8,7 @@ from django.utils.decorators import available_attrs
 
 def cache_view(view_func):
     @wraps(view_func, assigned=available_attrs(view_func))
-    def _wrapped_view_func(view: 'CachedApiView', *args, **kwargs):
+    def _wrapped_view_func(view, *args, **kwargs):
         request = view.request
 
         cache_key = view.get_cache_key()
@@ -38,6 +38,7 @@ def cache_view(view_func):
                 )
 
         return response
+    _wrapped_view_func.__annotations__ = {'view': 'CachedApiView'}
 
     return _wrapped_view_func
 
